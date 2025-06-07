@@ -1,0 +1,22 @@
+{
+    "_meta_language_flag": "🇬🇧",
+    "_meta_language_name": "English",
+    "start_chat": "🤖 Start a chat",
+    "start_commands_btn": "📚 Commands",
+    "start_msg": "I am a bot created to suggest your posts to [Half-Life Collective](https://t.me/HalfLifeCollective)",
+    "start_language_btn": "🌐 Language",
+    "general_back_btn": "« Go back",
+    "language_changed_successfully": "The language has been changed successfully.",
+    "language_changer_chat": "Here you can change the language used for the bot throughout the chat.",
+    "language_changer_private": "Here you can change the language used for the bot in this private chat.",
+    "cmds_category_general": "✨ General",
+    "cmds_category_tools": "🔧 Tools",
+    "cmds_category_info": "ℹ️ Info",
+    "cmds_list_select_category": "Please select a category to see the available commands.",
+    "cmds_list_category_title": "Commands in the <b>{category}</b> category:",
+    "suggestpost_example": "<b>Example</b>: /suggestpost or /sp [file and text (optional)]",
+    "suggestpost_info": "From user: {user_name} (ID: {user_id})",
+    "suggestpost_text": "\nText: {text}",
+    "cmd_suggestpost_description": "Submits your media file for review and publication on <a href=\"https://t.me/HalfLifeCollective\">Half-Life Collective</a>",
+    "cmd_ping_description": "Shows the bot delay to send a message."
+}

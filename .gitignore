@@ -1,0 +1,34 @@
+# Cache
+__pycache__/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# PyCharm project
+.idea/
+
+# Visual Studio Code workspace settings
+.vscode
+
+# Session files
+bot/*.session*
+
+*.session*
+
+# Database
+*.db*
+
+# Bot personal config file
+config.py
+
+# Misc
+unknown_errors.txt
+bot/downloads/
+.spyproject/
+*.egg-info/
