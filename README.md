@@ -31,4 +31,9 @@ WORKERS = 24
 FORWARDING_CHAT = 123456789
 ```
 
+Run the bot:
+```shell
+pythom3 -m bot
+```
+
 Have fun!
