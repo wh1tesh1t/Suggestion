@@ -40,7 +40,7 @@ async def chlang(c: Client, m: CallbackQuery | Message, s: Strings):
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
             *gen_langs_kb(),
-            [InlineKeyboardButton(s("general_back_btn"), callback_data="start_back")],
+            [InlineKeyboardButton(s("general_back_btn"), callback_data="menu_back")],
         ]
     )
 

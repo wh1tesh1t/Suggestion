@@ -1,17 +1,17 @@
 import os
-from hydrogram import Client, filters
+from hydrogram import Client, filters, types
 from hydrogram.types import Message
 
-from config import FORWARDING_CHAT
+from config import FORWARDING_CHAT, MAX_FILE_SIZE_BYTES, MEDIA_CAPTION_LIMIT, TEXT_MESSAGE_LIMIT
 
 from bot.utils.localization import Strings, use_chat_lang
 from bot.database.global_ban import check_ban
 from bot.utils import commands
 
-@Client.on_message(filters.command(["suggestpost","sp"]))
+@Client.on_message(filters.command(["suggestpost","sp","r"]))
 @use_chat_lang
 @check_ban
-async def sendmedia(c: Client, m: Message, s: Strings):
+async def sendmedia(c: Client, m: types.Message, s: Strings):
     user = m.from_user
     user_name = user.username or user.first_name
     user_id = user.id
@@ -36,9 +36,9 @@ async def sendmedia(c: Client, m: Message, s: Strings):
         await m.reply_text(s("suggestpost_example"))
         return
 
-    caption_text = s("suggestpost_info").format(user_name=user_name, user_id=user_id)
+    caption_content = s("suggestpost_info").format(user_name=user_name, user_id=user_id)
     if text:
-        caption_text += s("suggestpost_text").format(text=text)
+        caption_content += s("suggestpost_text").format(text=text)
 
     media_types = {
         'audio': c.send_audio,
@@ -52,19 +52,31 @@ async def sendmedia(c: Client, m: Message, s: Strings):
     for attr, send_func in media_types.items():
         media = getattr(m, attr, None)
         if media:
+            if media.file_size and media.file_size > MAX_FILE_SIZE_BYTES:
+                await m.reply_text(s("suggestpost_file_too_large").format(limit_mb=MAX_FILE_SIZE_BYTES / (1024*1024)))
+                return
+
+            final_media_caption = caption_content
+            if len(final_media_caption) > MEDIA_CAPTION_LIMIT:
+                final_media_caption = final_media_caption[:MEDIA_CAPTION_LIMIT]
+
             file = await c.download_media(media)
             await send_func(
                 chat_id=FORWARDING_CHAT,
                 **{attr: file},
-                caption=caption_text
+                caption=final_media_caption
             )
             await m.reply_text(s("suggestpost_sended"))
             os.remove(file)
             break
     else:
+        final_text_message = caption_content
+        if len(final_text_message) > TEXT_MESSAGE_LIMIT:
+            final_text_message = final_text_message[:TEXT_MESSAGE_LIMIT]
+
         await c.send_message(
             chat_id=FORWARDING_CHAT,
-            text=caption_text
+            text=final_text_message
         )
         await m.reply_text(s("suggestpost_sended"))
 
