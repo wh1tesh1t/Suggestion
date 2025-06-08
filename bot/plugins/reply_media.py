@@ -58,6 +58,7 @@ async def sendmedia(c: Client, m: Message, s: Strings):
                 **{attr: file},
                 caption=caption_text
             )
+            await m.reply_text(s("suggestpost_sended"))
             os.remove(file)
             break
     else:
@@ -65,5 +66,6 @@ async def sendmedia(c: Client, m: Message, s: Strings):
             chat_id=FORWARDING_CHAT,
             text=caption_text
         )
+        await m.reply_text(s("suggestpost_sended"))
 
 commands.add_command("suggestpost", "general")
