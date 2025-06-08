@@ -35,7 +35,7 @@ async def cmds_list(c: Client, m: CallbackQuery, s: Strings):
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
             *gen_categories_kb(s),
-            [InlineKeyboardButton(s("general_back_btn"), callback_data="start_back")],
+            [InlineKeyboardButton(s("general_back_btn"), callback_data="menu_back")],
         ]
     )
     await m.message.edit_text(s("cmds_list_select_category"), reply_markup=keyboard)
@@ -69,7 +69,7 @@ async def show_help(c: Client, m: Message, s: Strings):
         inline_keyboard=[
             [
                 InlineKeyboardButton(
-                    s("start_chat"),
+                    s("menu_start_chat"),
                     url=f"https://t.me/{c.me.username}?start=help",
                 )
             ]

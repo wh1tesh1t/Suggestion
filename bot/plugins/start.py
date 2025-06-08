@@ -27,31 +27,4 @@ async def start_pvt(c: Client, m: Message | CallbackQuery, s: Strings):
         msg = m
         send = msg.reply_text
 
-    keyboard = InlineKeyboardMarkup(
-        inline_keyboard=[
-            [
-                InlineKeyboardButton(s("start_commands_btn"), callback_data="commands"),
-            ],
-            [
-                InlineKeyboardButton(s("start_language_btn"), callback_data="chlang"),
-            ],
-        ]
-    )
-    await send(s("start_msg"), reply_markup=keyboard, parse_mode=ParseMode.MARKDOWN)
-
-
-@Client.on_message(filters.command("start") & filters.group, group=2)
-@use_chat_lang
-@check_ban
-async def start_grp(c: Client, m: Message | CallbackQuery, s: Strings):
-    keyboard = InlineKeyboardMarkup(
-        inline_keyboard=[
-            [
-                InlineKeyboardButton(
-                    s("start_chat"),
-                    url=f"https://t.me/{c.me.username}?start=start",
-                )
-            ]
-        ]
-    )
-    await m.reply_text(s("start_msg"), reply_markup=keyboard, parse_mode=ParseMode.MARKDOWN)
+    await send(s("start_msg"), parse_mode=ParseMode.MARKDOWN)
