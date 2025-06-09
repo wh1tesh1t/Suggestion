@@ -2,6 +2,8 @@ import os
 from hydrogram import Client, filters
 from hydrogram.types import Message
 
+from sqlite3 import IntegrityError, OperationalError
+
 from config import SUPER_ADMIN, DATABASE_PATH
 
 from bot.utils import commands
