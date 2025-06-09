@@ -5,7 +5,7 @@
     "menu_commands_btn": "📚 Commands",
     "menu_msg": "Menu",
     "start_msg": "I am an simple bot created for suggesting your posts or simply asking a question.\n\n/sp - Suggest something\n/menu - Opens the menu with settings\n\nSource Code: [CLICK](https://github.com/wh1tesh1t/Suggestion/tree/master)",
-    "menu_language_btn": "🌐 Language",
+    "menu_language_btn": "🇬🇧 Lang",
     "general_back_btn": "« Back",
     "language_changed_successfully": "The language has been changed successfully.",
     "language_changer_chat": "Here you can change the language used for the bot throughout the chat.",
@@ -46,5 +46,8 @@
     "you_cannot_ban_superadmin": "You cannot ban the Superadmin!",
     "you_cannot_ban_admin": "You cannot ban another Admin!",
     "you_cannot_unban_superadmin": "You cannot unban the Superadmin!",
-    "you_cannot_unban_admin": "You cannot unban an Admin!"
+    "you_cannot_unban_admin": "You cannot unban an Admin!",
+    "feedback_example": "Example: (cmd) (user_id) (text)",
+    "feedback_sent_success": "Message to ({name} ID: {id}) sent successfully!",
+    "feedback_sent_fail": "Message to ({id}) was not sent! Perhaps such a user_id does not exist, or the user has not started the bot in private messages."
 }

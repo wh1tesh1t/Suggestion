@@ -26,6 +26,25 @@ async def get_admin_id(user_id):
     else:
         return None
 
+@Client.on_message(filters.command("feedback") & filters.user(SUPER_ADMIN))
+@use_chat_lang
+async def feedbackcmd(c: Client, m: Message, s: Strings):
+    args = m.text.split(maxsplit=2)
+
+    if len(args) < 3:
+        return await m.reply_text(s("feedback_example"))
+
+    try:
+        user_id = int(args[1])
+        fmsg = args[2]
+        user = await c.get_users(user_id)
+        username = user.username if user.username else "noname"
+
+        await c.send_message(chat_id=user_id, text=fmsg)
+        await m.reply_text(s("feedback_sent_success").format(name=username, id=user_id))
+    except Exception as e:
+        await m.reply_text(s("feedback_sent_fail").format(id=user_id))
+
 @Client.on_message(filters.command("me"))
 @use_chat_lang
 @check_ban
