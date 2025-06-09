@@ -4,7 +4,7 @@
     "menu_start_chat": "🤖 Start a chat",
     "menu_commands_btn": "📚 Commands",
     "menu_msg": "Menu",
-    "start_msg": "I am an simple bot created for suggesting your posts or simply asking a question.\n\n/sp - Suggest something\n/menu - Opens the menu with settings\n\nSource Code: [CLICK](https://github.com/wh1tesh1t/Suggestion/tree/master)",
+    "start_msg": "I am an simple bot created for suggesting your posts or simply asking a question.\n\n/sp - Suggest something\n/menu - Opens the menu with settings\n\nSource Code: [CLICK](https://github.com/wh1tesh1t/Suggestion/tree/main)",
     "menu_language_btn": "🇬🇧 Lang",
     "general_back_btn": "« Back",
     "language_changed_successfully": "The language has been changed successfully.",
