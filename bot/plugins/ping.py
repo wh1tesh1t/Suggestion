@@ -19,4 +19,4 @@ async def ping(c: Client, m: Message):
     await sent.edit_text(f"<b>Pong!</b> <code>{(second - first).microseconds / 1000}</code>ms")
 
 
-commands.add_command("ping", "info")
+commands.add_command("ping", "general")

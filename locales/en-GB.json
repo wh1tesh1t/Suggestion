@@ -2,7 +2,7 @@
     "_meta_language_flag": "🇬🇧",
     "_meta_language_name": "English",
     "menu_start_chat": "🤖 Start a chat",
-    "menu_commands_btn": "📚 Commands",
+    "menu_commands_btn": "🤓 Commands",
     "menu_msg": "Menu",
     "start_msg": "I am an simple bot created for suggesting your posts or simply asking a question.\n\n/sp - Suggest something\n/menu - Opens the menu with settings\n\nSource Code: [CLICK](https://github.com/wh1tesh1t/Suggestion/tree/main)",
     "menu_language_btn": "🇬🇧 Lang",
@@ -13,7 +13,6 @@
     "cmds_category_general": "✨ General",
     "cmds_category_tools": "🔧 Tools",
     "cmds_category_info": "ℹ️ Info",
-    "cmds_category_admin": "👮‍♂️ Administration",
     "cmds_list_select_category": "Please select a category to see the available commands.",
     "cmds_list_category_title": "Commands in the <b>{category}</b> category:",
     "cmds_list_group_help": "To get acquainted with the bot's commands, you need to go to private messages. You can do this by clicking the button 👇",
@@ -26,8 +25,6 @@
     "cmd_ping_description": "Shows the bot delay to send a message.",
     "cmd_menu_description": "Opens the menu with settings",
     "cmd_me_description": "Shows whether you are a Bot Admin or not.",
-    "cmd_ban_user_description": "Allows to ban users by ID so they cannot use the Bot.",
-    "cmd_unban_user_description": "Allows to unblock a user by ID so that they can use the bot again.",
     "you_not_admin": "You not Admin! ❌",
     "you_admin": "You are Admin! ✔️",
     "sql_error": "SQL executed with an error: {classname): {error}",
@@ -49,5 +46,6 @@
     "you_cannot_unban_admin": "You cannot unban an Admin!",
     "feedback_example": "Example: (cmd) (user_id) (text)",
     "feedback_sent_success": "Message to ({name} ID: {id}) sent successfully!",
-    "feedback_sent_fail": "Message to ({id}) was not sent! Perhaps such a user_id does not exist, or the user has not started the bot in private messages."
+    "feedback_sent_fail": "Message to ({id}) was not sent! Perhaps such a user_id does not exist, or the user has not started the bot in private messages.",
+    "restart_text": "Restarting bot please wait."
 }

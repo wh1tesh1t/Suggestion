@@ -1,4 +1,5 @@
 import os
+import sys
 from hydrogram import Client, filters
 from hydrogram.types import Message
 
@@ -32,6 +33,13 @@ async def get_admin_id(user_id):
     else:
         return None
 
+@Client.on_message(filters.command("restart") & filters.user(SUPER_ADMIN))
+@use_chat_lang
+@loggerprint
+async def restartbot(c: Client, m: Message, s: Strings):
+    await m.reply_text(s("restart_text"))
+    os.execv(sys.executable, [sys.executable, "-m", "bot"])
+
 @Client.on_message(filters.command("feedback") & filters.user(SUPER_ADMIN))
 @use_chat_lang
 @loggerprint
@@ -51,6 +59,7 @@ async def feedbackcmd(c: Client, m: Message, s: Strings):
         await m.reply_text(s("feedback_sent_success").format(name=username, id=user_id))
     except Exception as e:
         await m.reply_text(s("feedback_sent_fail").format(id=user_id))
+
 
 @Client.on_message(filters.command("me"))
 @use_chat_lang
@@ -266,6 +275,4 @@ async def global_unban_user(c: Client, m: Message, s: Strings):
         await m.reply(f"Error: {str(e)}")
 
 
-commands.add_command("me", "admin")
-commands.add_command("ban_user", "admin")
-commands.add_command("unban_user", "admin")
+commands.add_command("me", "general")
