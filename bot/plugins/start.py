@@ -9,6 +9,8 @@ from hydrogram.types import (
 from bot.utils import commands
 from bot.utils.localization import Strings, use_chat_lang
 
+from bot.utils.logger import loggerprint
+
 from bot.database.global_ban import check_ban
 
 
@@ -19,6 +21,7 @@ from hydrogram.enums import ParseMode
 @Client.on_callback_query(filters.regex("^start_back$"))
 @use_chat_lang
 @check_ban
+@loggerprint
 async def start_pvt(c: Client, m: Message | CallbackQuery, s: Strings):
     if isinstance(m, CallbackQuery):
         msg = m.message

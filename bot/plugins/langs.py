@@ -15,6 +15,8 @@ from bot.database.localization import set_db_lang
 from bot.utils.decorators import require_admin
 from bot.utils.localization import Strings, langdict, use_chat_lang
 
+from bot.utils.logger import loggerprint
+
 from bot.database.global_ban import check_ban
 
 def gen_langs_kb():
@@ -36,6 +38,7 @@ def gen_langs_kb():
 @require_admin(allow_in_private=True)
 @use_chat_lang
 @check_ban
+@loggerprint
 async def chlang(c: Client, m: CallbackQuery | Message, s: Strings):
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
@@ -63,6 +66,7 @@ async def chlang(c: Client, m: CallbackQuery | Message, s: Strings):
 @Client.on_callback_query(filters.regex("^set_lang "))
 @require_admin(allow_in_private=True)
 @check_ban
+@loggerprint
 async def set_chat_lang(c: Client, m: CallbackQuery):
     lang = m.data.split()[1]
     await set_db_lang(m.message.chat.id, m.message.chat.type, lang)
@@ -72,6 +76,7 @@ async def set_chat_lang(c: Client, m: CallbackQuery):
 
 @use_chat_lang
 @check_ban
+@loggerprint
 async def set_chat_lang_edit(c: Client, m: CallbackQuery, s: Strings):
     if m.message.chat.type == ChatType.PRIVATE:
         keyboard = InlineKeyboardMarkup(

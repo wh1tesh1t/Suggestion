@@ -12,6 +12,8 @@ from bot.utils import commands
 from bot.utils.decorators import stop_here
 from bot.utils.localization import Strings, use_chat_lang
 
+from bot.utils.logger import loggerprint
+
 from bot.database.global_ban import check_ban
 
 def gen_categories_kb(strings_manager):
@@ -31,6 +33,7 @@ def gen_categories_kb(strings_manager):
 @Client.on_callback_query(filters.regex("^commands$"))
 @use_chat_lang
 @check_ban
+@loggerprint
 async def cmds_list(c: Client, m: CallbackQuery, s: Strings):
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
@@ -45,6 +48,7 @@ async def cmds_list(c: Client, m: CallbackQuery, s: Strings):
 @use_chat_lang
 @stop_here
 @check_ban
+@loggerprint
 async def show_private_help(c: Client, m: Message, s: Strings):
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
@@ -64,6 +68,7 @@ async def show_private_help(c: Client, m: Message, s: Strings):
 @use_chat_lang
 @stop_here
 @check_ban
+@loggerprint
 async def show_help(c: Client, m: Message, s: Strings):
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
@@ -81,6 +86,7 @@ async def show_help(c: Client, m: Message, s: Strings):
 @Client.on_callback_query(filters.regex("^view_category .+"))
 @use_chat_lang
 @check_ban
+@loggerprint
 async def get_category(c: Client, m: CallbackQuery, s: Strings):
     msg = commands.get_commands_message(s, m.data.split(maxsplit=1)[1])
     keyboard = InlineKeyboardMarkup(

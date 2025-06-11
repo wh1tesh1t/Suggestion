@@ -8,9 +8,12 @@ from bot.utils.localization import Strings, use_chat_lang
 from bot.database.global_ban import check_ban
 from bot.utils import commands
 
+from bot.utils.logger import loggerprint
+
 @Client.on_message(filters.command(["suggestpost","sp","r"]))
 @use_chat_lang
 @check_ban
+@loggerprint
 async def sendmedia(c: Client, m: types.Message, s: Strings):
     user = m.from_user
     user_name = user.username or user.first_name

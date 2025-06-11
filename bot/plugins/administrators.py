@@ -9,6 +9,7 @@ from config import SUPER_ADMIN, DATABASE_PATH
 from bot.database import database
 from bot.utils import commands
 from bot.utils.localization import Strings, use_chat_lang
+from bot.utils.logger import loggerprint
 from bot.database.administrators import (
     user_add_to_admin,
     user_remove_from_admin,
@@ -33,6 +34,7 @@ async def get_admin_id(user_id):
 
 @Client.on_message(filters.command("feedback") & filters.user(SUPER_ADMIN))
 @use_chat_lang
+@loggerprint
 async def feedbackcmd(c: Client, m: Message, s: Strings):
     args = m.text.split(maxsplit=2)
 
@@ -53,6 +55,7 @@ async def feedbackcmd(c: Client, m: Message, s: Strings):
 @Client.on_message(filters.command("me"))
 @use_chat_lang
 @check_ban
+@loggerprint
 async def sudos(c: Client, m: Message , s: Strings):
     admin = await get_admin_id(m.from_user.id)
 
@@ -75,6 +78,7 @@ async def backupcmd(c: Client, m: Message):
 
 @Client.on_message(filters.command("sql") & filters.user(SUPER_ADMIN))
 @use_chat_lang
+@loggerprint
 async def execsql(c: Client, m: Message, s: Strings):
     command = m.text.split(maxsplit=1)[1]
 
@@ -108,6 +112,7 @@ async def execsql(c: Client, m: Message, s: Strings):
 
 @Client.on_message(filters.command("add_admin") & filters.user(SUPER_ADMIN))
 @use_chat_lang
+@loggerprint
 async def add_admin(c: Client, m: Message, s: Strings):
     if len(m.command) < 2:
         await m.reply(s("give_me_user_id"))
@@ -133,6 +138,7 @@ async def add_admin(c: Client, m: Message, s: Strings):
 
 @Client.on_message(filters.command("del_admin") & filters.user(SUPER_ADMIN))
 @use_chat_lang
+@loggerprint
 async def del_admin(c: Client, m: Message, s: Strings):
     if len(m.command) < 2:
         await m.reply(s("give_me_user_id"))
@@ -158,6 +164,7 @@ async def del_admin(c: Client, m: Message, s: Strings):
 @Client.on_message(filters.command("ban_user"))
 @use_chat_lang
 @check_ban
+@loggerprint
 async def global_ban_user(c: Client, m: Message, s: Strings):
     caller_id = m.from_user.id
     admin = await get_admin_id(caller_id)
@@ -210,6 +217,7 @@ async def global_ban_user(c: Client, m: Message, s: Strings):
 @Client.on_message(filters.command("unban_user"))
 @use_chat_lang
 @check_ban
+@loggerprint
 async def global_unban_user(c: Client, m: Message, s: Strings):
     caller_id = m.from_user.id
     admin = await get_admin_id(caller_id)
